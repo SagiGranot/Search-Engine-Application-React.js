@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Results from './results'
 import { MdSearch } from "react-icons/md"
+const localStorage = require('localStorage')
 
 class Search extends Component
 {
@@ -18,9 +18,9 @@ class Search extends Component
 
     save(event) {
         event.preventDefault() // to prevent the default behaviour/ functionality
+        localStorage.setItem('query', this._query.value);
         this.setState({
             editing: false,
-            query: this._query.value
         })
     }
     change(){
@@ -41,14 +41,7 @@ class Search extends Component
         )
     }
     renderUI(props) {
-        return (
-            <div>
-                <button onClick={this.change}>Return to search</button>
-                <Results
-                    _query = { this.state.query }
-                />
-            </div>
-        )
+        window.location.href = '/results'
       }
     render() {
        return this.state.editing ? this.renderForm() : this.renderUI()
