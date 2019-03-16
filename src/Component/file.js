@@ -2,7 +2,7 @@ import  React, { Component } from 'react'
 import ReactHtmlParser from 'react-html-parser';
 
 
-class Search extends Component
+class File extends Component
 {
     constructor(props){
         super(props)
@@ -10,7 +10,7 @@ class Search extends Component
         
     }
 
-    componentdDidMount(){
+    componentDidMount(){
         let params = (new URL(document.location)).searchParams;
         let id = params.get("id");
         let url = 'http://localhost:8080/view/'+id+'/'
@@ -33,4 +33,4 @@ class Search extends Component
        )
     }
 }
-export default Search
+export default File
