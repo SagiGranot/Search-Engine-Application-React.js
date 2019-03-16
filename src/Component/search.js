@@ -18,7 +18,8 @@ class Search extends Component
 
     save(event) {
         event.preventDefault() // to prevent the default behaviour/ functionality
-        localStorage.setItem('query', this._query.value);
+        localStorage.setItem('query', "")
+        localStorage.setItem('query', this._query.value)
         this.setState({
             editing: false,
         })

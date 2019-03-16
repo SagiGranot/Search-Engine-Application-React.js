@@ -45,7 +45,7 @@ add({ id = null, summary = null}) {
     }))
 }
 eachDoc(doc, i) {
-    let url = "/view?"+doc.id
+    let url = "/view?id="+doc.id
     return (
         <div
         key={ `container${doc.id}` }
