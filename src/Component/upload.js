@@ -11,11 +11,16 @@ class Upload extends Component
                     url: '', name: '',
                     images: [],
                     imageUrls: [],
-                    message: ''
+                    message: '',
+                    logged: false,
+                    password: '1234'
     }
-    this.selectFiles  = this.selectFiles.bind(this)
-    this.uploadImages = this.uploadImages.bind(this)
-    this.disable      = this.disable.bind(this)
+    this.selectFiles       = this.selectFiles.bind(this)
+    this.uploadImages      = this.uploadImages.bind(this)
+    this.disable           = this.disable.bind(this)
+    this.renderLogin       = this.renderLogin.bind(this)
+    this.renderUpload      = this.renderUpload.bind(this)
+    this.handleSubmit      = this.handleSubmit.bind(this)
   }
 
   selectFiles = (event) => {
@@ -67,7 +72,34 @@ class Upload extends Component
     }
   }
 
-  render(){
+  handleSubmit(event){
+    event.preventDefault()
+    if(this.refs.password.value === this.state.password){
+      this.setState({logged: true})
+    }
+    else{
+      alert("Not valid password")
+      this.refs.password.value = ""
+    }
+  }
+
+  renderLogin(){
+    return(
+      <div>
+        <form style={{marginTop:'50px', textAlign: 'center', fontFamily: 'Francois One, sans-serif'}} onSubmit={this.handleSubmit}>
+          <br/><br/>
+          <div>Password:</div>
+          <input type="password" name='password' ref='password'/>
+          <br/><br/>
+          <span>
+            <input type="submit" value="Login"/>
+          </span>
+        </form>
+      </div>
+    )
+  }
+
+  renderUpload(){
     return(
       <div>
         <div>
@@ -88,5 +120,10 @@ class Upload extends Component
       </div>
     )
   }
+
+  render(){
+    return this.state.logged ? this.renderUpload() : this.renderLogin()
+   }
 }
+
 export default Upload

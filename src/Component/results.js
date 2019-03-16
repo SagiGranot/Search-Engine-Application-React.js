@@ -5,10 +5,14 @@ import Search from './search'
 class Result extends Component {
   constructor(props) {
     super(props)
-    this.state = { docs: [] } 
+    this.state = {
+            docs: [],
+            index: 3
+        } 
 
     this.add     = this.add.bind(this)
     this.eachDoc = this.eachDoc.bind(this)
+    this.inc = this.inc.bind(this)
 }
 
 componentDidMount() {
@@ -45,6 +49,8 @@ add({ id = null, summary = null}) {
         }]
     }))
 }
+
+
 eachDoc(doc, i) {
     let url = "/view?id="+doc.id
     return (
@@ -62,13 +68,19 @@ eachDoc(doc, i) {
     )
 }
 
+inc(){
+    this.setState({index: this.state.index+5})
+}
 render() {
     return (
         <div>
             <Search/>
             <br/><br/>
             <div style = {{width: '900px', margin: '0px auto'}}>
-                { this.state.docs.map(this.eachDoc) }
+         
+                { this.state.docs.slice(0,this.state.index).map(this.eachDoc) }
+                <button onClick={this.inc}>load more</button>
+                
             </div>
         </div>
     )
