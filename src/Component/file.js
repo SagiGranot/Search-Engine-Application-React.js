@@ -10,7 +10,7 @@ class Search extends Component
         
     }
 
-    componentWillMount(){
+    componentdDidMount(){
         let params = (new URL(document.location)).searchParams;
         let id = params.get("id");
         let url = 'http://localhost:8080/view/'+id+'/'
