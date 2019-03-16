@@ -44,7 +44,8 @@ class Upload extends Component
    });
     // Once all the files are uploaded 
     axios.all(uploaders).then(() => {
-      console.log('done');
+      alert('done')
+      window.location.href = '/'
       
     })
     .catch(err => alert(err.message));

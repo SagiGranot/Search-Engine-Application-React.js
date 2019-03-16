@@ -4,11 +4,13 @@ import File from '../Component/file'
 import Upload from '../Component/upload'
 import Results from '../Component/results'
 import Search from '../Component/search'
+import { NavLink } from  "react-router-dom"
 
 
 const ReactRouter = () => {
     return (
         <React.Fragment>
+            <NavLink exact to="/upload">Upload</NavLink>
             <Route exact path="/"    component={Search}/>
             <Route path="/results"    component={Results}/>
             <Route path="/view"       component={File}/>
