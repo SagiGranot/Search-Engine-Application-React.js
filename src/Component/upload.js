@@ -105,9 +105,8 @@ class Upload extends Component
         <div>
 	        	<br/>
 	        	<div style = {{textAlign: 'center', fontFamily: 'Francois One, sans-serif'}}>
-        			<h2>Image Uploader</h2>
-                <label>Name<br/><input type="text" name='name' ref='name' required/></label><br/><br/>
-		        		<input type="file" onChange={this.selectFiles} multiple style = {{width: '200px', marginLeft: '23px'}} required/>
+        			<h2>Document Uploader</h2>
+		        	<input type="file" onChange={this.selectFiles} multiple style = {{width: '200px', marginLeft: '23px'}} required/>
 		          	{ this.state.message? <p>{this.state.message}</p>: ''}
 		          	<br/><br/><br/>
 		          	<button value="Submit" onClick={this.uploadImages}>Submit</button>
