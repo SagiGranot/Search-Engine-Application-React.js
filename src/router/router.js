@@ -10,7 +10,7 @@ import { NavLink } from  "react-router-dom"
 const ReactRouter = () => {
     return (
         <React.Fragment>
-            <NavLink exact to="/upload">Upload</NavLink>
+            <NavLink exact to="/upload">Admin</NavLink>
             <Route exact path="/"    component={Search}/>
             <Route path="/results"    component={Results}/>
             <Route path="/view"       component={File}/>

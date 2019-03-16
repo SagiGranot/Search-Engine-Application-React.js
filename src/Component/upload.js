@@ -15,6 +15,7 @@ class Upload extends Component
     }
     this.selectFiles  = this.selectFiles.bind(this)
     this.uploadImages = this.uploadImages.bind(this)
+    this.disable      = this.disable.bind(this)
   }
 
   selectFiles = (event) => {
@@ -51,19 +52,37 @@ class Upload extends Component
     .catch(err => alert(err.message));
   }
 
+  disable(){
+    let url = 'http://localhost:8080/disable/'
+    url = url + this.refs.name.value
+    if(this.refs.name.value){
+      fetch(url)
+      .then(()=> {
+        alert(this.refs.name.value + " was disabled")
+        this.refs.name.value = ""
+      })
+    }
+    else{
+      console.log("error")
+    }
+  }
+
   render(){
     return(
       <div>
         <div>
 	        	<br/>
 	        	<div style = {{textAlign: 'center', fontFamily: 'Francois One, sans-serif'}}>
-        			<h1>Image Uploader</h1>
+        			<h2>Image Uploader</h2>
                 <label>Name<br/><input type="text" name='name' ref='name' required/></label><br/><br/>
 		        		<input type="file" onChange={this.selectFiles} multiple style = {{width: '200px', marginLeft: '23px'}} required/>
 		          	{ this.state.message? <p>{this.state.message}</p>: ''}
 		          	<br/><br/><br/>
 		          	<button value="Submit" onClick={this.uploadImages}>Submit</button>
-                <br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><b><u>OR</u></b><br/><br/><br/>
+                <h2>Disable a document</h2>
+                <label>Document Number<br/><input type="text" name='name' ref='name' required/></label><br/><br/>
+                <button value="Submit" onClick={this.disable}>Submit</button>
 		        </div>
         </div>
       </div>
