@@ -1,5 +1,6 @@
 import  React, { Component } from 'react'
 import ReactHtmlParser from 'react-html-parser';
+import Search from './search'
 
 
 class File extends Component
@@ -28,6 +29,7 @@ class File extends Component
     render() {
        return(
            <div>
+               <Search/><br/><br/>
                {ReactHtmlParser(this.state.text)}
            </div>
        )

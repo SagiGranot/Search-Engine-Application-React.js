@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from  "react-router-dom";
+import Search from './search'
 
 class Result extends Component {
   constructor(props) {
@@ -64,6 +65,7 @@ eachDoc(doc, i) {
 render() {
     return (
         <div>
+            <Search/>
             <br/><br/>
             <div style = {{width: '900px', margin: '0px auto'}}>
                 { this.state.docs.map(this.eachDoc) }
